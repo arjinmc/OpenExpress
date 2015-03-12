@@ -8,6 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * @desciption About me and the project
+ * @author eminem
+ * @email eminem@hicsg.com
+ * @website arjinmc.com
+ * @create 2015/3/12
+ */
 public class AboutFragment extends Fragment{
 	
 	@Override

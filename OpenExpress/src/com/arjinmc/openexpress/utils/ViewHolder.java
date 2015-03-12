@@ -3,6 +3,10 @@ package com.arjinmc.openexpress.utils;
 import android.util.SparseArray;
 import android.view.View;
 
+/**
+ * this class is a common for viewholder
+ * I got it from website but I don't know who's the author
+ */
 public class ViewHolder {
     // I added a generic return type to reduce the casting noise in client code
     @SuppressWarnings("unchecked")

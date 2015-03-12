@@ -17,5 +17,12 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     	<item name="android:windowNoTitle">true</item>
     </style>
+    
+    <style name="textview_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/main_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
 </resources>
