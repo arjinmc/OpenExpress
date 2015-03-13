@@ -1,4 +1,4 @@
-package com.arjinmc.openexpress;
+package com.arjinmc.openexpress.adapter;
 
 import java.util.List;
 
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.arjinmc.openexpress.R;
+import com.arjinmc.openexpress.R.id;
+import com.arjinmc.openexpress.R.layout;
 import com.arjinmc.openexpress.model.ExpressDetailBean;
 import com.arjinmc.openexpress.utils.ViewHolder;
 
