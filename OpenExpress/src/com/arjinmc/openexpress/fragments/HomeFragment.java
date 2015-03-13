@@ -1,5 +1,6 @@
 package com.arjinmc.openexpress.fragments;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,13 +21,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.arjinmc.openexpress.R;
-import com.arjinmc.openexpress.RecordAdapter;
+import com.arjinmc.openexpress.adapter.RecordAdapter;
 import com.arjinmc.openexpress.http.ExpressDetailResponse;
 import com.arjinmc.openexpress.http.ExpressDetailRunnable;
 import com.arjinmc.openexpress.model.ExpressBean;
+import com.arjinmc.openexpress.model.ExpressRecordBean;
+import com.arjinmc.openexpress.utils.DataHelperUtil;
 import com.arjinmc.openexpress.utils.ExpressUtil;
 import com.arjinmc.openexpress.utils.HttpHelper;
 import com.arjinmc.openexpress.utils.ViewHolder;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 /**
  * @desciption Home get the express info
@@ -45,6 +49,8 @@ public class HomeFragment extends Fragment implements OnClickListener{
 	
 	/**express company info*/
 	private List<ExpressBean> mExpressBeans;
+	/**for save search record*/
+	private ExpressRecordBean recordBean;
 	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	
@@ -99,14 +105,18 @@ public class HomeFragment extends Fragment implements OnClickListener{
 	private void searchExpress(){
 		String billCode = etBill.getText().toString();
 		//for testing,just select the first express company
-		//billCode = "411424930730";
+		billCode = "411424930730";
 		if(TextUtils.isEmpty(billCode)){
 			tvError.setText(getActivity().getString(R.string.express_bill_empty));
 			tvError.setVisibility(View.VISIBLE);
 		}else{
+			
+			String companyCode = ((ExpressBean)spCompany.getSelectedItem()).getNumber();
+			recordBean.setCompanyCode(companyCode);
+			recordBean.setBillCode(billCode);
+			
 			tvError.setVisibility(View.GONE);
-			executor.execute(new ExpressDetailRunnable(
-					((ExpressBean)spCompany.getSelectedItem()).getNumber()
+			executor.execute(new ExpressDetailRunnable(companyCode
 					, billCode, mHandler, HttpHelper.REQUEST_FINISH
 					, getActivity()));
 		}
@@ -116,6 +126,8 @@ public class HomeFragment extends Fragment implements OnClickListener{
 		mExpressBeans = ExpressUtil.getExpressCode(getActivity());
 		ExpressCompanyAdapter lAdapter = new ExpressCompanyAdapter();
 		spCompany.setAdapter(lAdapter);
+		
+		recordBean = new ExpressRecordBean();
 	}
 	
 	
@@ -164,6 +176,21 @@ public class HomeFragment extends Fragment implements OnClickListener{
 		if(response.getErrCode()==0){
 			RecordAdapter recordAdapter = new RecordAdapter(getActivity(), response.getData());
 			lvRecords.setAdapter(recordAdapter);
+			
+			
+			//save search record
+			RuntimeExceptionDao<ExpressRecordBean, Integer> simpleDao = DataHelperUtil.getHelper(getActivity())
+					.getExpressBillDao();
+			try {
+				if(simpleDao.queryBuilder()
+						.where().eq("companyCode", recordBean.getCompanyCode())
+						.and().eq("billCode", recordBean.getBillCode())
+						.query().size()==0){
+					simpleDao.create(recordBean);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 			lvRecords.setVisibility(View.VISIBLE);
 			tvError.setVisibility(View.GONE);

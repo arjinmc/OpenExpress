@@ -7,34 +7,11 @@
     android:padding="16sp"
     android:background="@color/white">
     
-    <TextView 
-        style="@style/textview_wrap"
-        android:text="Get Express Bill Details"
-        android:layout_marginBottom="8dp"/>
-    
-    <Spinner 
-        android:id="@+id/sp_company"
+   <ListView 
+        android:id="@+id/lv_records"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        />
-    
-    <EditText 
-        android:id="@+id/et_bill_code"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_edittext"
-        android:padding="6dp"
-        android:hint="express bill code"/>
-    
-    <Button 
-        android:id="@+id/btn_search"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/shape_btn_press"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:text="search"
-        android:layout_marginTop="8dp"/>
+        android:layout_height="match_parent"
+        android:divider="@color/transparent"
+        android:listSelector="@color/transparent"/>
     
 </LinearLayout>

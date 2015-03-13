@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16sp"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:focusableInTouchMode="true">
     
     <TextView 
         style="@style/textview_wrap"
@@ -13,7 +14,8 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        />
     
     <Spinner 
         android:id="@+id/sp_company"
