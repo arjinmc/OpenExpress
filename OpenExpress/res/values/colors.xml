@@ -8,5 +8,8 @@
     <color name="main_bg">#fff</color>
     
     <color name="main_text">#000</color>
+    <color name="btn_blue_press">#104E8B</color>
+    <color name="btn_blue_normal">#1874CD</color>
+    <color name="text_error">#FF3030</color>
     
 </resources>

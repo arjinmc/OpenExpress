@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+    
+    <TextView 
+        android:id="@+id/item_tv_time"
+        style="@style/textview_wrap"/>
+	 <TextView 
+        android:id="@+id/item_tv_context"
+        style="@style/textview_wrap"/>
+</LinearLayout>

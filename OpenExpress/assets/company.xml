@@ -1,4 +1,8 @@
 <company>
+     <express>
+        <name>顺丰快递</name>
+        <code>shunfeng</code>
+    </express>
     <express>
         <name>DHL快递</name>
         <code>dhl</code>
@@ -30,10 +34,6 @@
     <express>
         <name>申通快递</name>
         <code>shentong</code>
-    </express>
-    <express>
-        <name>顺丰快递</name>
-        <code>shunfeng</code>
     </express>
     <express>
         <name>天天快递</name>
