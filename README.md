@@ -2,10 +2,6 @@
 A open source application for search express infomation.<br>
 Especially for China express,it maybe work so slow if u are not in China.<br>
 
-#ATTENTION PLEASE
-Don't use these images for my project for bussiness, because there are found from the internet.  
-Don't use my express key from <a href="http://ickd.cn">ickd.cn</a> for bussiness. U can have one just apply for it.  
-
 ![image](https://github.com/arjinmc/OpenExpress/blob/master/OpenExpress/images/demo.png)  
 
 Open this source is for a competition holded by a online-education origanation group named JIKEXUEYUAN.<br>
@@ -15,6 +11,10 @@ By the way,thanks to AndroidResideMenu.Here is the repository:
 <a href="https://github.com/SpecialCyCi/AndroidResideMenu">https://github.com/SpecialCyCi/AndroidResideMenu</a>  
 Thaks to OrmLite.  
 OrmLite Offical site:<a href="http://ormlite.com/">http://ormlite.com/</a>  
+
+#ATTENTION PLEASE
+Don't use these images for my project for bussiness, because there are found from the internet.  
+Don't use my express key from <a href="http://ickd.cn">ickd.cn</a> for bussiness. U can have one just apply for it.  
 
 #A bit info about us CSG:
 Our offical site:<a href="http://www.hicsg.com/">http://www.hicsg.com/</a><br>
