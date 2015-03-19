@@ -3,6 +3,7 @@ package com.arjinmc.openexpress.fragments;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.arjinmc.openexpress.EditDeliverActivity;
 import com.arjinmc.openexpress.R;
+import com.arjinmc.openexpress.listener.DeliverListener;
 import com.arjinmc.openexpress.model.DeliverBean;
 import com.arjinmc.openexpress.utils.DataHelperUtil;
 import com.arjinmc.openexpress.utils.DeliverUtil;
@@ -39,9 +40,9 @@ public class DeliverFragment extends Fragment{
 	private TextView tvAdd;
 	private ListView lvDelivers;
 	private ListAdapter mAdapter;
-	
-	
 	private List<DeliverBean> deliverBeans; 
+	
+	private DeliverListener mListener;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -136,7 +137,7 @@ public class DeliverFragment extends Fragment{
 	}
 	
 	
-	private void showData(){
+	public void showData(){
 		RuntimeExceptionDao<DeliverBean, Integer> simpleDao 
 			= DataHelperUtil.getHelper(getActivity())
 				.getDeliverDao();
@@ -152,10 +153,24 @@ public class DeliverFragment extends Fragment{
 				Intent editInent = new Intent(getActivity(),EditDeliverActivity.class);
 				editInent.setAction(DeliverUtil.ACTION_EDIT);
 				editInent.putExtra("deliver", deliverBeans.get(postion));
-				startActivity(editInent);
+				startActivityForResult(editInent,1);
 				return false;
 			}
 		});
 	}
+	
+	
+	@Override
+	public void onAttach(Activity activity) {
+		  // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception.
+        try {
+        	mListener = (DeliverListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString());
+        }
+		super.onAttach(activity);
+	}
+	
 
 }

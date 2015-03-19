@@ -1,10 +1,12 @@
 package com.arjinmc.openexpress;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,10 +16,11 @@ import com.arjinmc.openexpress.fragments.AboutFragment;
 import com.arjinmc.openexpress.fragments.DeliverFragment;
 import com.arjinmc.openexpress.fragments.HistoryFragment;
 import com.arjinmc.openexpress.fragments.HomeFragment;
+import com.arjinmc.openexpress.listener.DeliverListener;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
-public class MainActivity extends FragmentActivity implements OnClickListener{
+public class MainActivity extends FragmentActivity implements OnClickListener,DeliverListener{
 	
 	private ResideMenu resideMenu;
     private ResideMenuItem itemHome;
@@ -26,6 +29,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
     private ResideMenuItem itemAbout;
     
     private TextView tvTitle;
+    
+    private DeliverFragment fragmentDeliver = new DeliverFragment();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +94,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 		        changeFragment(new HistoryFragment());
 		        tvTitle.setText("History");
 		    }else if (view == itemDeliver){
-		        changeFragment(new DeliverFragment());
+		        changeFragment(fragmentDeliver);
 		        tvTitle.setText("Delivers");
 		    }else if (view == itemAbout){
 		        changeFragment(new AboutFragment());
@@ -123,6 +128,20 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 		
 		public ResideMenu getResideMenu(){
 		    return resideMenu;
+		}
+		
+		
+		@Override
+		public void onActivityResult(int requestCode, int resultCode, Intent data) {
+			if(resultCode == RESULT_OK){
+				update();
+			}
+			super.onActivityResult(requestCode, resultCode, data);
+		}
+
+		@Override
+		public void update() {
+			fragmentDeliver.showData();
 		}
 
 }
