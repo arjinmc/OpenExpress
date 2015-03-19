@@ -20,6 +20,12 @@ import com.arjinmc.openexpress.listener.DeliverListener;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
+/**
+ * @desciption main activity to control residemenu
+ * @author eminem
+ * @email eminem@hicsg.com
+ * @website arjinmc.com
+ */
 public class MainActivity extends FragmentActivity implements OnClickListener,DeliverListener{
 	
 	private ResideMenu resideMenu;
@@ -139,6 +145,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener,De
 			super.onActivityResult(requestCode, resultCode, data);
 		}
 
+		/**
+		 * let the deliver fragment update to show datas
+		 */
 		@Override
 		public void update() {
 			fragmentDeliver.showData();

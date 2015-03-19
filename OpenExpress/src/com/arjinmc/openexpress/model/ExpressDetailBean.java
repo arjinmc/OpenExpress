@@ -5,7 +5,6 @@ package com.arjinmc.openexpress.model;
  * @author eminem
  * @email eminem@hicsg.com
  * @website arjinmc.com
- * @create 2015/3/12
  */
 public class ExpressDetailBean {
 	

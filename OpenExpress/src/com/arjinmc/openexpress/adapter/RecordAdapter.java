@@ -21,7 +21,6 @@ import com.arjinmc.openexpress.utils.ViewHolder;
  * @author eminem
  * @email eminem@hicsg.com
  * @website arjinmc.com
- * @create 2015/3/13
  */
 public class RecordAdapter extends BaseAdapter {
 	

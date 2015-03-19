@@ -20,6 +20,12 @@ import com.arjinmc.openexpress.http.ExpressDetailRunnable;
 import com.arjinmc.openexpress.utils.ExpressUtil;
 import com.arjinmc.openexpress.utils.HttpHelper;
 
+/**
+ * @desciption this activity to show the express record
+ * @author eminem
+ * @email eminem@hicsg.com
+ * @website arjinmc.com
+ */
 public class ExpressDetailActivity extends Activity {
 	
 	private ImageButton ibBack;
@@ -44,7 +50,6 @@ public class ExpressDetailActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_express_detail);
 		

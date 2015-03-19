@@ -18,6 +18,12 @@ import com.arjinmc.openexpress.utils.DataHelperUtil;
 import com.arjinmc.openexpress.utils.DeliverUtil;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
+/**
+ * @desciption this activity is for add or modify deliver contacts
+ * @author eminem
+ * @email eminem@hicsg.com
+ * @website arjinmc.com
+ */
 public class EditDeliverActivity extends Activity implements OnClickListener{
 	
 	private String mAction;
@@ -52,6 +58,8 @@ public class EditDeliverActivity extends Activity implements OnClickListener{
 		
 		etName = (EditText) findViewById(R.id.et_name);
 		etPhone = (EditText) findViewById(R.id.et_phone);
+		
+		//when the action is edit,show the oraginal info
 		if(mAction.equals(DeliverUtil.ACTION_EDIT)){
 			etName.setText(mDeliverBean.getName());
 			etPhone.setText(mDeliverBean.getPhone());
@@ -79,6 +87,12 @@ public class EditDeliverActivity extends Activity implements OnClickListener{
 		
 	}
 	
+	/**
+	 * @desciption save the info have been entered
+	 * @author eminem
+	 * @email eminem@hicsg.com
+	 * @website arjinmc.com
+	 */
 	private void save(){
 		String name = etName.getText().toString();
 		String phone = etPhone.getText().toString();
@@ -108,6 +122,7 @@ public class EditDeliverActivity extends Activity implements OnClickListener{
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			//when the action is edit,update the info
 			}else{
 				mDeliverBean.setName(name);
 				mDeliverBean.setPhone(phone);

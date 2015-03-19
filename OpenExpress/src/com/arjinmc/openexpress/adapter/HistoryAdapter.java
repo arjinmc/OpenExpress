@@ -24,7 +24,6 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
  * @author eminem
  * @email eminem@hicsg.com
  * @website arjinmc.com
- * @create 2015/3/13
  */
 public class HistoryAdapter extends BaseAdapter {
 	

@@ -10,7 +10,6 @@ import com.arjinmc.openexpress.model.ExpressDetailBean;
  * @author eminem
  * @email eminem@hicsg.com
  * @website arjinmc.com
- * @create 2015/3/13
  */
 public class ExpressDetailResponse implements Serializable{
 	

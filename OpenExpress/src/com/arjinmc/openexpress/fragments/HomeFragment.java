@@ -37,7 +37,6 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
  * @author eminem
  * @email eminem@hicsg.com
  * @website arjinmc.com
- * @create 2015/3/12
  */
 public class HomeFragment extends Fragment implements OnClickListener{
 	
@@ -105,7 +104,7 @@ public class HomeFragment extends Fragment implements OnClickListener{
 	private void searchExpress(){
 		String billCode = etBill.getText().toString();
 		//for testing,just select the first express company
-		billCode = "411424930730";
+		//billCode = "411424930730";
 		if(TextUtils.isEmpty(billCode)){
 			tvError.setText(getActivity().getString(R.string.express_bill_empty));
 			tvError.setVisibility(View.VISIBLE);

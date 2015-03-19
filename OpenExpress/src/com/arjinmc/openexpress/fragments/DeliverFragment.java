@@ -33,7 +33,6 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
  * @author eminem
  * @email eminem@hicsg.com
  * @website arjinmc.com
- * @create 2015/3/12
  */
 public class DeliverFragment extends Fragment{
 	
@@ -59,6 +58,9 @@ public class DeliverFragment extends Fragment{
 		lvDelivers = (ListView) view.findViewById(R.id.lv_records);
 		deliverBeans = new ArrayList<DeliverBean>();
 		
+		/**
+		 * add deliver info
+		 */
 		tvAdd.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -145,6 +147,7 @@ public class DeliverFragment extends Fragment{
 		mAdapter = new ListAdapter();
 		lvDelivers.setAdapter(mAdapter);
 		
+		//long click to edit
 		lvDelivers.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
