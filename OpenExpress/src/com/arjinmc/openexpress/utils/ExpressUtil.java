@@ -87,11 +87,12 @@ public class ExpressUtil {
 	
 	/**
 	 * get express company name
-	 * @param expressBeans
+	 * @param context
 	 * @param expressCode
 	 * @return
 	 */
-	public static String getExpressName(List<ExpressBean> expressBeans,String expressCode){
+	public static String getExpressName(Context context,String expressCode){
+		List<ExpressBean> expressBeans = getExpressCode(context);
 		String result = "";
 		if(expressBeans!=null && expressBeans.size()!=0){
 			for(int i=0;i<expressBeans.size();i++){

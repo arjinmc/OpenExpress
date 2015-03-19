@@ -5,13 +5,18 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.arjinmc.openexpress.R;
 import com.arjinmc.openexpress.model.ExpressRecordBean;
+import com.arjinmc.openexpress.utils.DataHelperUtil;
+import com.arjinmc.openexpress.utils.ExpressUtil;
 import com.arjinmc.openexpress.utils.ViewHolder;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 
 /**
@@ -52,15 +57,30 @@ public class HistoryAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
+		final int currentPostion = position;
+		
 		if(convertView == null){
 			convertView = LayoutInflater.from(mContext)
-					.inflate(R.layout.item_express_detial, null);
+					.inflate(R.layout.item_history, null);
 		}
 		
-		TextView tvTime = ViewHolder.get(convertView, R.id.item_tv_time);
-		TextView tvContext = ViewHolder.get(convertView, R.id.item_tv_context);
-		tvTime.setText(mRecords.get(position).getCompanyCode());
+		TextView tvTime = ViewHolder.get(convertView, R.id.item_tv_company);
+		TextView tvContext = ViewHolder.get(convertView, R.id.item_tv_code);
+		tvTime.setText(ExpressUtil.getExpressName(mContext, mRecords.get(position)
+				.getCompanyCode()));
 		tvContext.setText(mRecords.get(position).getBillCode());
+		ImageButton ibDelete = ViewHolder.get(convertView, R.id.item_ib_delete);
+		ibDelete.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				RuntimeExceptionDao<ExpressRecordBean, Integer> simpleDao 
+					= DataHelperUtil.getHelper(mContext).getExpressBillDao();
+				simpleDao.delete(mRecords.get(currentPostion));
+				mRecords.remove(currentPostion);
+				notifyDataSetChanged();
+			}
+		});
 		
 		return convertView;
 	}

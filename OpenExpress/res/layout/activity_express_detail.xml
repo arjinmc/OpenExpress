@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/head">
+        
+        <ImageButton 
+            android:id="@+id/ib_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="18dp"
+            android:src="@drawable/ic_back"
+            android:background="@color/transparent"/>
+        
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Home"/>
+        
+     </RelativeLayout>
+     <ListView 
+        android:id="@+id/lv_records"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        android:listSelector="@color/transparent"/>
+
+</LinearLayout>

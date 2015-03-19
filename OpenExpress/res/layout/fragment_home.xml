@@ -54,6 +54,7 @@
         android:id="@+id/lv_records"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/transparent"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
         android:listSelector="@color/transparent"/>
 </LinearLayout>

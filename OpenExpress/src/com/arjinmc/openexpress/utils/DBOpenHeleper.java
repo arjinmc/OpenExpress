@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
-import com.arjinmc.openexpress.model.ExpressBean;
+import com.arjinmc.openexpress.model.DeliverBean;
 import com.arjinmc.openexpress.model.ExpressRecordBean;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -25,6 +25,7 @@ public class DBOpenHeleper extends OrmLiteSqliteOpenHelper{
 	private final static String DB_NAME = "demo.db";
 	
 	private RuntimeExceptionDao<ExpressRecordBean, Integer> runExpressBill= null;
+	private RuntimeExceptionDao<DeliverBean, Integer> runDeliver= null;
 	
 	public DBOpenHeleper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -41,6 +42,7 @@ public class DBOpenHeleper extends OrmLiteSqliteOpenHelper{
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
 		 try {
 			TableUtils.createTableIfNotExists(connectionSource, ExpressRecordBean.class);
+			TableUtils.createTableIfNotExists(connectionSource, DeliverBean.class);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,7 +50,7 @@ public class DBOpenHeleper extends OrmLiteSqliteOpenHelper{
 	}
 	
 	/**
-	 * @desciption get Dao for person
+	 * @desciption get Dao for express bill
 	 * @author Eminem Lu
 	 * @email arjinmc@hicsg.com
 	 * @create 2015/2/26
@@ -59,6 +61,21 @@ public class DBOpenHeleper extends OrmLiteSqliteOpenHelper{
 			runExpressBill = getRuntimeExceptionDao(ExpressRecordBean.class);
 		}
 		return runExpressBill;
+	}
+	
+	
+	/**
+	 * @desciption get Dao for deliver
+	 * @author Eminem Lu
+	 * @email arjinmc@hicsg.com
+	 * @create 2015/2/26
+	 * @return
+	 */
+	public RuntimeExceptionDao<DeliverBean, Integer> getDeliverDao() {
+		if (runDeliver == null) {
+			runDeliver = getRuntimeExceptionDao(DeliverBean.class);
+		}
+		return runDeliver;
 	}
 
 	@Override

@@ -2,14 +2,18 @@ package com.arjinmc.openexpress.fragments;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.arjinmc.openexpress.ExpressDetailActivity;
 import com.arjinmc.openexpress.R;
 import com.arjinmc.openexpress.adapter.HistoryAdapter;
 import com.arjinmc.openexpress.model.ExpressRecordBean;
@@ -25,6 +29,7 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
  */
 public class HistoryFragment extends Fragment {
 	
+	private List<ExpressRecordBean> recordBeans;
 	private ListView lvRecords;
 	private HistoryAdapter mAdapter;
 	
@@ -45,9 +50,21 @@ public class HistoryFragment extends Fragment {
 	private void init(){
 		RuntimeExceptionDao<ExpressRecordBean, Integer> simpleDao = DataHelperUtil.getHelper(getActivity())
 				.getExpressBillDao();
-		List<ExpressRecordBean> recordBeans = simpleDao.queryForAll();
+		recordBeans = simpleDao.queryForAll();
 		mAdapter = new HistoryAdapter(getActivity(), recordBeans);
 		lvRecords.setAdapter(mAdapter);
+		lvRecords.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view, int position,
+					long id) {
+				Intent itemIntent = new Intent(getActivity(),ExpressDetailActivity.class);
+				itemIntent.putExtra("company", recordBeans.get(position).getCompanyCode());
+				itemIntent.putExtra("code", recordBeans.get(position).getBillCode());
+				startActivity(itemIntent);
+				
+			}
+		});
 	}
 
 }

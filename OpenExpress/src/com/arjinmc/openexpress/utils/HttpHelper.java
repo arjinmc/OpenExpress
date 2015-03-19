@@ -61,6 +61,7 @@ public class HttpHelper {
 	          }  
 	        } catch (Exception e) {  
 	            e.printStackTrace();  
+	            return result;
 	        }  		    
 		}       
 		return result;

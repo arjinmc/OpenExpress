@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/head">
+        
+        <ImageButton 
+            android:id="@+id/ib_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="18dp"
+            android:src="@drawable/ic_back"
+            android:background="@color/transparent"/>
+        
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Home"/>
+        
+     </RelativeLayout>
+     <LinearLayout 
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical"
+         android:padding="16dp">
+	     <TextView 
+	        style="@style/textview_wrap"
+	        android:text="Name:"/>
+	     <EditText 
+	         android:id="@+id/et_name"
+	         style="@style/textview_wrap"
+	         android:singleLine="true"
+	         android:layout_width="match_parent"/>
+	     <TextView 
+	        style="@style/textview_wrap"
+	        android:text="Phone:"/>
+	     <EditText 
+	         android:id="@+id/et_phone"
+	         style="@style/textview_wrap"
+	         android:singleLine="true"
+	         android:inputType="phone"
+	         android:layout_width="match_parent"/>
+	     
+	     <Button 
+	        android:id="@+id/btn_done"
+	        android:layout_width="match_parent"
+	        android:layout_height="48dp"
+	        android:background="@drawable/selector_btn"
+	        android:textColor="@color/white"
+	        android:textSize="16sp"
+	        android:text="Done"
+	        android:layout_marginTop="8dp"
+	        />
+	     <TextView 
+	        android:id="@+id/tv_error"
+	        style="@style/textview_wrap"
+	        android:text="@string/express_bill_empty"
+	        android:textColor="@color/text_error"
+	        android:layout_marginTop="8dp"
+	        android:visibility="gone"
+	        />
+     </LinearLayout>
+
+     
+</LinearLayout>
