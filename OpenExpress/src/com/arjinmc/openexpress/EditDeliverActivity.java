@@ -63,6 +63,10 @@ public class EditDeliverActivity extends Activity implements OnClickListener{
 		if(mAction.equals(DeliverUtil.ACTION_EDIT)){
 			etName.setText(mDeliverBean.getName());
 			etPhone.setText(mDeliverBean.getPhone());
+			
+			tvTitle.setText("Edit Deliver");
+		}else{
+			tvTitle.setText("Add Deliver");
 		}
 		
 		btnDone = (Button) findViewById(R.id.btn_done);
