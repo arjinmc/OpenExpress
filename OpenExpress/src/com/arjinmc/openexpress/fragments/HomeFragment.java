@@ -26,6 +26,7 @@ import com.arjinmc.openexpress.http.ExpressDetailResponse;
 import com.arjinmc.openexpress.http.ExpressDetailRunnable;
 import com.arjinmc.openexpress.model.ExpressBean;
 import com.arjinmc.openexpress.model.ExpressRecordBean;
+import com.arjinmc.openexpress.utils.DBOptionUtil;
 import com.arjinmc.openexpress.utils.DataHelperUtil;
 import com.arjinmc.openexpress.utils.ExpressUtil;
 import com.arjinmc.openexpress.utils.HttpHelper;
@@ -104,7 +105,7 @@ public class HomeFragment extends Fragment implements OnClickListener{
 	private void searchExpress(){
 		String billCode = etBill.getText().toString();
 		//for testing,just select the first express company
-		//billCode = "411424930730";
+		billCode = "411424930730";
 		if(TextUtils.isEmpty(billCode)){
 			tvError.setText(getActivity().getString(R.string.express_bill_empty));
 			tvError.setVisibility(View.VISIBLE);
@@ -178,18 +179,7 @@ public class HomeFragment extends Fragment implements OnClickListener{
 			
 			
 			//save search record
-			RuntimeExceptionDao<ExpressRecordBean, Integer> simpleDao = DataHelperUtil.getHelper(getActivity())
-					.getExpressBillDao();
-			try {
-				if(simpleDao.queryBuilder()
-						.where().eq("companyCode", recordBean.getCompanyCode())
-						.and().eq("billCode", recordBean.getBillCode())
-						.query().size()==0){
-					simpleDao.create(recordBean);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			DBOptionUtil.saveExpressBill(getActivity(), recordBean);
 			
 			lvRecords.setVisibility(View.VISIBLE);
 			tvError.setVisibility(View.GONE);

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.arjinmc.openexpress.R;
 import com.arjinmc.openexpress.model.ExpressRecordBean;
+import com.arjinmc.openexpress.utils.DBOptionUtil;
 import com.arjinmc.openexpress.utils.DataHelperUtil;
 import com.arjinmc.openexpress.utils.ExpressUtil;
 import com.arjinmc.openexpress.utils.ViewHolder;
@@ -73,9 +74,7 @@ public class HistoryAdapter extends BaseAdapter {
 			
 			@Override
 			public void onClick(View v) {
-				RuntimeExceptionDao<ExpressRecordBean, Integer> simpleDao 
-					= DataHelperUtil.getHelper(mContext).getExpressBillDao();
-				simpleDao.delete(mRecords.get(currentPostion));
+				DBOptionUtil.deleteExpressBill(mContext, mRecords.get(currentPostion));
 				mRecords.remove(currentPostion);
 				notifyDataSetChanged();
 			}

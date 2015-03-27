@@ -7,6 +7,16 @@
     android:padding="16sp"
     android:background="@color/white">
     
+    <Button 
+        android:id="@+id/btn_clear"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/selector_btn"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:text="clear the history"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
    <ListView 
         android:id="@+id/lv_records"
         android:layout_width="match_parent"

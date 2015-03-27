@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.arjinmc.openexpress.model.DeliverBean;
+import com.arjinmc.openexpress.utils.DBOptionUtil;
 import com.arjinmc.openexpress.utils.DataHelperUtil;
 import com.arjinmc.openexpress.utils.DeliverUtil;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -109,28 +110,18 @@ public class EditDeliverActivity extends Activity implements OnClickListener{
 		}else{
 			tvError.setVisibility(View.INVISIBLE);
 			
-			RuntimeExceptionDao<DeliverBean, Integer> simpleDao 
-				= DataHelperUtil.getHelper(EditDeliverActivity.this)
-					.getDeliverDao();
+			
 			if(mAction.equals(DeliverUtil.ACTION_ADD)){
 				DeliverBean tempBean = new DeliverBean();
 				tempBean.setName(name);
 				tempBean.setPhone(phone);
-				try {
-					if(simpleDao.queryBuilder()
-							.where().eq("name", name)
-							.and().eq("phone", phone)
-							.query().size()==0){
-						simpleDao.create(tempBean);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			//when the action is edit,update the info
+				
+				//when the action is edit,update the info
+				DBOptionUtil.saveDeliver(EditDeliverActivity.this, tempBean);
 			}else{
 				mDeliverBean.setName(name);
 				mDeliverBean.setPhone(phone);
-				simpleDao.update(mDeliverBean);
+				DBOptionUtil.updateDeliver(EditDeliverActivity.this, mDeliverBean);
 			}
 			
 			setResult(RESULT_OK);

@@ -23,6 +23,7 @@ import com.arjinmc.openexpress.EditDeliverActivity;
 import com.arjinmc.openexpress.R;
 import com.arjinmc.openexpress.listener.DeliverListener;
 import com.arjinmc.openexpress.model.DeliverBean;
+import com.arjinmc.openexpress.utils.DBOptionUtil;
 import com.arjinmc.openexpress.utils.DataHelperUtil;
 import com.arjinmc.openexpress.utils.DeliverUtil;
 import com.arjinmc.openexpress.utils.ViewHolder;
@@ -140,10 +141,7 @@ public class DeliverFragment extends Fragment{
 	
 	
 	public void showData(){
-		RuntimeExceptionDao<DeliverBean, Integer> simpleDao 
-			= DataHelperUtil.getHelper(getActivity())
-				.getDeliverDao();
-		deliverBeans = simpleDao.queryForAll();
+		deliverBeans = DBOptionUtil.getAllDelivers(getActivity());
 		mAdapter = new ListAdapter();
 		lvDelivers.setAdapter(mAdapter);
 		
