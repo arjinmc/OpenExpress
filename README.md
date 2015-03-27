@@ -1,6 +1,6 @@
 # OpenExpress
 A open source application for search express infomation.<br>
-Especially for China express,it maybe work so slow if u are not in China.<br>
+Especially for Chinese expresses,it maybe work so slow if u are not in China.<br>
 
 ![image](https://github.com/arjinmc/OpenExpress/blob/master/OpenExpress/images/demo.png)  
 
@@ -11,6 +11,9 @@ By the way,thanks to AndroidResideMenu.Here is the repository:
 <a href="https://github.com/SpecialCyCi/AndroidResideMenu">https://github.com/SpecialCyCi/AndroidResideMenu</a>  
 Thaks to OrmLite.  
 OrmLite Offical site:<a href="http://ormlite.com/">http://ormlite.com/</a>  
+
+#Chinese Explanation
+<a href="http://blog.sina.com.cn/s/blog_4b20ae2e0102vi07.html">http://blog.sina.com.cn/s/blog_4b20ae2e0102vi07.html</a>
 
 #ATTENTION PLEASE
 Don't use these images for my project for bussiness, because there are found from the internet.  
